@@ -9,6 +9,27 @@ import scrapy
 
 
 class RobotChinaItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    """
+        列表页item
+    """
+    # 文章标题
+    title = scrapy.Field()
+    # 文章链接
+    link = scrapy.Field()
+
+    # 抓取时间
+    crawl_time = scrapy.Field()
+    # 爬虫源
+    source = scrapy.Field()
+
+
+class DetailItem(scrapy.Item):
+    """
+        详情页item
+    """
+    # 发布时间
+    publish_time = scrapy.Field()
+    # 文章出处
+    publish_from = scrapy.Field()
+    # 文章内容
+    publish_data = scrapy.Field()
