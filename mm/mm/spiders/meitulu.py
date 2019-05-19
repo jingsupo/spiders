@@ -6,9 +6,9 @@ from ..items import MmItem
 class MeituluSpider(scrapy.Spider):
     name = 'meitulu'
     allowed_domains = ['www.meitulu.com']
+    # start_urls = ['https://www.meitulu.com/item/15318.html']
+    start_urls = ['https://www.meitulu.com/item/16718.html']
     title = ''
-    base_url = 'https://www.meitulu.com/item/12235'
-    start_urls = [base_url + '.html']
 
     def parse(self, response):
         page_no = response.xpath('//div[@id="pages"]/span/text()').extract_first()
@@ -22,7 +22,6 @@ class MeituluSpider(scrapy.Spider):
                 self.title = item['title']
             else:
                 item['title'] = self.title
-            print(item)
             yield item
         page = 'https://www.meitulu.com' + response.xpath('//div[@id="pages"]/a[text()="下一页"]/@href').extract_first()
         if page:
