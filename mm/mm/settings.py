@@ -69,6 +69,7 @@ ITEM_PIPELINES = {
    'mm.pipelines.MmImagesPipeline': 300,
 }
 IMAGES_STORE = 'D:/spiders/mm/images/'
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
