@@ -6,7 +6,7 @@ from ..items import DemoItem, ImgItem
 class A1688Spider(scrapy.Spider):
     name = '1688'
     allowed_domains = ['1688.com', 'alicdn.com']
-    start_urls = ['https://detail.1688.com/offer/551913102197.html']
+    start_urls = ['https://detail.1688.com/offer/536255690440.html']
 
     def parse(self, response):
         title = response.xpath('//h1[@class="d-title"]/text()').extract_first()
