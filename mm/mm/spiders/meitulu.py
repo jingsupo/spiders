@@ -7,7 +7,7 @@ class MeituluSpider(scrapy.Spider):
     name = 'meitulu'
     allowed_domains = ['www.meitulu.com']
     # start_urls = ['https://www.meitulu.com/item/15318.html']
-    start_urls = ['https://www.meitulu.com/item/5276.html']
+    start_urls = ['https://www.meitulu.com/item/17487.html']
     title = ''
 
     def parse(self, response):

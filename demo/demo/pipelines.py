@@ -37,7 +37,7 @@ class DemoJsonPipeline(object):
 
 class DemoMongoPipeline(object):
     def open_spider(self, spider):
-        self.client = MongoClient(host='192.168.75.144', port=27017)
+        self.client = MongoClient(host='192.168.75.148', port=27017)
         self.db = self.client.demo
 
     def process_item(self, item, spider):

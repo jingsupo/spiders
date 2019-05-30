@@ -70,8 +70,8 @@ class Mmspider(object):
                 print (self.title)
                 # 替换标题中的/，因为目录名称不允许使用/
                 self.title = self.title.replace('/', '_')
-                if not os.path.exists(self.title):
-                    os.mkdir(self.title)
+                if not os.path.exists('./images/' + self.title):
+                    os.mkdir('./images/' + self.title)
             else:
                 url = self.base_url + '_' + str(self.offset) + '.html'
                 self.offset += 1
@@ -80,7 +80,7 @@ class Mmspider(object):
             # 解析提取子链接 每一条单独的帖子
             first_data_list = self.parse_data(first_response, '//img[@class="content_img"]/@src')
             if not first_data_list:
-        	    break
+                break
             # 发送图片请求 保存图片到本地
             for img_url in first_data_list:
                 # 发送请求
@@ -98,7 +98,7 @@ class Mmspider(object):
 
 
 if __name__ == '__main__':
-    base_url = "https://www.meitulu.com/item/16718"
+    base_url = "https://www.meitulu.com/item/7972"
     start_page = 1
     end_page = 100
 
