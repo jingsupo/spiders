@@ -3,15 +3,13 @@
 # Define here the models for your scraped items
 #
 # See documentation in:
-# https://doc.scrapy.org/en/latest/topics/items.html
+# https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
 
 
-class MmItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    # 标题作为保存图片的文件夹名
+class MeituluItem(scrapy.Item):
+    # 标题，作为保存图片的文件夹名
     title = scrapy.Field()
     # 图片链接
     img_src = scrapy.Field()
