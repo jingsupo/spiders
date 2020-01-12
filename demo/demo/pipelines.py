@@ -7,7 +7,7 @@
 
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
-from .items import DemoItem, ImgItem, ZBJItem
+from .items import DemoItem, ImgItem
 import json
 from pymongo import MongoClient
 from datetime import datetime
@@ -15,7 +15,7 @@ from datetime import datetime
 
 class DemoPipeline(object):
     def process_item(self, item, spider):
-        if isinstance(item, (DemoItem, ZBJItem)):
+        if isinstance(item, DemoItem):
             item['source'] = spider.name
             item['crawl_time'] = str(datetime.utcnow())
         return item
@@ -26,7 +26,7 @@ class DemoJsonPipeline(object):
         self.file_name = open('demo.json', 'w', encoding='gbk')
 
     def process_item(self, item, spider):
-        if isinstance(item, (DemoItem, ZBJItem)):
+        if isinstance(item, DemoItem):
             content = json.dumps(dict(item)) + ',\n'
             self.file_name.write(content)
         return item
@@ -37,11 +37,11 @@ class DemoJsonPipeline(object):
 
 class DemoMongoPipeline(object):
     def open_spider(self, spider):
-        self.client = MongoClient(host='192.168.75.148', port=27017)
+        self.client = MongoClient(host='192.168.75.50', port=27017)
         self.db = self.client.demo
 
     def process_item(self, item, spider):
-        if isinstance(item, (DemoItem, ZBJItem)):
+        if isinstance(item, DemoItem):
             self.db.items.insert(dict(item))
         return item
 

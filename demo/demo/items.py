@@ -9,12 +9,9 @@ import scrapy
 
 
 class DemoItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
     title = scrapy.Field()
-    price = scrapy.Field()
-    amount = scrapy.Field()
-    detail_attr = scrapy.Field()
+    link = scrapy.Field()
+    down_link = scrapy.Field()
 
     source = scrapy.Field()
     crawl_time = scrapy.Field()
@@ -22,15 +19,3 @@ class DemoItem(scrapy.Item):
 
 class ImgItem(scrapy.Item):
     img_src = scrapy.Field()
-
-
-class ZBJItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    title = scrapy.Field()
-    link = scrapy.Field()
-    price = scrapy.Field()
-    participants = scrapy.Field()
-
-    source = scrapy.Field()
-    crawl_time = scrapy.Field()

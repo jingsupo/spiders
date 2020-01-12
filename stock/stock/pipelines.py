@@ -30,7 +30,7 @@ class StockJsonPipeline(object):
 
 class StockMongoPipeline(object):
     def open_spider(self, spider):
-        self.client = MongoClient(host='192.168.75.148', port=27017)
+        self.client = MongoClient(host='192.168.75.50', port=27017)
         self.db = self.client.stock
 
     def process_item(self, item, spider):

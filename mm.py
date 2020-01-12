@@ -1,28 +1,20 @@
 #!/usr/bin python
 # -*- coding:utf-8 -*-
 
-import requests, time, os
+import os
+import time
+import requests
 from lxml import etree
 
 
 class Mmspider(object):
     def __init__(self, base_url, start_page, end_page):
-        #self.base_url = "https://www.meitulu.com/item/293"
-        #self.base_url = "https://www.meitulu.com/item/8686"
         self.base_url = base_url
         self.offset = 2
 
         self.headers = {
-            # "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-            # "Accept-Encoding":"gzip, deflate, br",
-            # "Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8",
-            # "Cache-Control":"max-age=0",
-            # "Connection":"keep-alive",
-            # "Host":"www.meitulu.com",
-            # "If-None-Match":'W/"5a2db15c-3f32"',
-            "Referer":"https://www.meitulu.com/",
-            # "Upgrade-Insecure-Requests":"1",
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
+            "Referer": "https://www.meitulu.com/",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
         }
 
         self.start = start_page
@@ -37,12 +29,13 @@ class Mmspider(object):
             response = requests.get(url, params=params, headers=self.headers)
             return response.content
         except Exception as e:
-            print (e)
+            print(e)
 
     # 写入文件
     def write_file(self, data, fn):
-        print (fn)
-        filename = './images/' + self.title + '/' + fn
+        print(fn)
+        # filename = './images/' + self.title + '/' + fn
+        filename = './images/' + 'test' + '/' + fn
         with open(filename, 'wb') as f:
             f.write(data)
 
@@ -67,7 +60,7 @@ class Mmspider(object):
                 first_response = self.send_request(url)
                 # 解析获取帖子标题
                 self.title = self.parse_data(first_response, '//h1/text()')[0]
-                print (self.title)
+                print(self.title)
                 # 替换标题中的/，因为目录名称不允许使用/
                 self.title = self.title.replace('/', '_')
                 if not os.path.exists('./images/' + self.title):
@@ -94,11 +87,16 @@ class Mmspider(object):
 
         total_time = end_time - start_time
 
-        print ('总时间%ss' % total_time)
+        print('总时间%ss' % total_time)
 
 
 if __name__ == '__main__':
-    base_url = "https://www.meitulu.com/item/7972"
+    # base_url = "https://www.meitulu.com/item/7972"
+    # base_url = "https://www.meitulu.com/item/293"
+    # base_url = "https://www.meitulu.com/item/8686"
+    base_url = "https://www.meitulu.com/item/19185"
+    # base_url = "https://www.meitulu.com/item/19182"
+    # base_url = "https://www.meitulu.com/item/967"
     start_page = 1
     end_page = 100
 
